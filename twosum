@@ -12,7 +12,7 @@ class Solution{
             return new int[0];
 	}
 }
-%hashmap
+%hashmap1
 import java.util.HashMap;
 
 class Solution {
