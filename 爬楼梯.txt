@@ -1,0 +1,14 @@
+//爬楼梯，n个台阶，每次上一个或者两个，有多少种上法，本质上是斐波那契
+class Solution {
+    public int climbStairs(int n) {
+        if(n ==1){return 1;}
+        int[] dp=new int[n+1];//这样的话dp1就正好等于数组第一个元素，否则的话dp[1]对应第二个元素
+        dp[1]=1;
+        dp[2]=2;
+        for(int i=3;i<n+1;i++)
+        {
+            dp[i]=dp[i-1]+dp[i-2];
+        }
+        return dp[n];
+    }
+}

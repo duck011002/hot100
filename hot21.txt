@@ -1,0 +1,35 @@
+//两个有序链表拼接成新链表
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        // 创建一个虚拟头节点，方便操作结果链表
+        ListNode dummy = new ListNode(-1);
+        // cur 用来指向结果链表当前最后一个节点
+        ListNode cur = dummy;
+
+        // 当两条链表都还有节点时，比较当前节点值
+        while (list1 != null && list2 != null) {
+            // 如果 list1 当前值更小或相等，就先接 list1
+            if (list1.val <= list2.val) {
+                cur.next = list1;      // 把 list1 当前节点接到结果链表后面
+                list1 = list1.next;    // list1 往后走一步
+            } else {
+                cur.next = list2;      // 把 list2 当前节点接到结果链表后面
+                list2 = list2.next;    // list2 往后走一步
+            }
+
+            // 结果链表尾指针往后走一步
+            cur = cur.next;
+        }
+
+        // 如果 list1 还有剩余节点，直接接到后面
+        if (list1 != null) {
+            cur.next = list1;
+        } else {
+            // 否则把 list2 剩余部分接到后面
+            cur.next = list2;
+        }
+
+        // 返回真正的头节点
+        return dummy.next;
+    }
+}
